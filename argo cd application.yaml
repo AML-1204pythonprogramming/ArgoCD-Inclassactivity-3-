@@ -1,0 +1,49 @@
+**MariaDB Application**:
+   ```yaml
+   apiVersion: argoproj.io/v1alpha1
+   kind: Application
+   metadata:
+     name: mariadb
+     namespace: argocd
+   spec:
+     source:
+       repoURL: 'git@github.com:AML-1204pythonprogramming/argocd.git'
+       path: mariadb
+       targetRevision: HEAD
+     destination:
+       server: https://kubernetes.default.svc
+       namespace: default
+   ```
+
+   **WordPress Application**:
+   ```yaml
+   apiVersion: argoproj.io/v1alpha1
+   kind: Application
+   metadata:
+     name: wordpress
+     namespace: argocd
+   spec:
+     source:
+       repoURL: 'git@github.com:AML-1204pythonprogramming/argocd.git'
+       path: wordpress
+       targetRevision: HEAD
+     destination:
+       server: https://kubernetes.default.svc
+       namespace: default
+   ```
+
+   **Nginx Proxy Application**:
+   ```yaml
+   apiVersion: argoproj.io/v1alpha1
+   kind: Application
+   metadata:
+     name: nginx-proxy
+     namespace: argocd
+   spec:
+     source:
+       repoURL: 'git@github.com:AML-1204pythonprogramming/argocd.git'
+       path: nginx
+       targetRevision: HEAD
+     destination:
+       server: https://kubernetes.default.svc
+       namespace: default
