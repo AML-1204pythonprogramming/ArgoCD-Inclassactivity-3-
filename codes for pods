@@ -1,0 +1,16 @@
+kubectl run nginx --image=nginx --port=80 --restart=Always
+
+kubectl run mariadb --image=mariadb --env="MYSQL_ROOT_PASSWORD=rootpassword" --port=3306 --restart=Always
+
+kubectl run wordpress --image=wordpress --env="WORDPRESS_DB_HOST=mariadb:3306" --env="WORDPRESS_DB_NAME=wordpress" --env="WORDPRESS_DB_USER=root" --env="WORDPRESS_DB_PASSWORD=rootpassword" --port=80 --restart=Always
+
+
+kubectl expose pod nginx --type=LoadBalancer --name=nginx-service --port=80 --target-port=80
+
+kubectl expose pod mariadb --type=ClusterIP --name=mariadb-service --port=3306 --target-port=3306
+
+kubectl expose pod wordpress --type=LoadBalancer --name=wordpress-service --port=80 --target-port=80
+
+kubectl get pods
+kubectl get services
+
