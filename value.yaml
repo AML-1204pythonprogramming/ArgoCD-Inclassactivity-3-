@@ -1,0 +1,13 @@
+mariadb:
+  image:
+    repository: mariadb
+    tag: 10.6.4-focal
+    pullPolicy: IfNotPresent
+  env:
+    MYSQL_ROOT_PASSWORD: root_password
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: wordpress_password
+  service:
+    type: ClusterIP
+    port: 3306
